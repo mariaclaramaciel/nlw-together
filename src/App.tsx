@@ -1,11 +1,22 @@
-import {Button} from "./components/Button"
-// Aqui eu importei o componente Button pois é nessa pasta app.tsx que o html é alterado na pagina. Criei uma tag button que é o proprio componente
+import { BrowserRouter, Route } from 'react-router-dom';
+
+import {Home} from './pages/Home';
+import { NewRoom } from './pages/NewRoom';
+
+
+import { AuthContextProvider } from './contexts/AuthContext'
+
 
 function App() {
+  
+
   return (
-    <div>
-      <Button />
-    </div>
+    <BrowserRouter>
+      <AuthContextProvider>
+        <Route path="/" exact component={Home} />
+        <Route path="/rooms/new" component={NewRoom} />
+        </ AuthContextProvider>
+    </ BrowserRouter>
   );
 }
 
